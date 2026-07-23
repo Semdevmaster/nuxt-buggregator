@@ -15,11 +15,10 @@ jobs:
         steps:
             - uses: actions/checkout@v6
 
-            - uses: voidzero-dev/setup-vp@v1
+            - uses: actions/setup-node@v5
               with:
                   node-version: '24'
-                  cache: true
-                  run-install: false
+                  cache: npm
 
             - name: Install
               run: npm ci
@@ -28,10 +27,10 @@ jobs:
               run: npm run dev:prepare
 
             - name: Check
-              run: npm run check
+              run: ./node_modules/.bin/vp check
 
             - name: Test
-              run: npm run test
+              run: ./node_modules/.bin/vp test
 
             - name: Build
               run: npm run prepack

@@ -11,6 +11,8 @@ export default defineConfig({
     semi: false,
     singleQuote: true,
     endOfLine: 'lf',
+    ignorePatterns: ['package.json', 'package-lock.json', '**/package-lock.json'],
+    sortPackageJson: false,
   },
   staged: {
     '*': 'vp check --fix',
