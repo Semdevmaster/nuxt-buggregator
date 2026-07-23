@@ -85,6 +85,16 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile = nuxt.options.build.transpile || []
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
 
+    // Linked `file:` installs resolve h3/nitropack from the module tree; force host copies.
+    nuxt.options.vite = defu(nuxt.options.vite, {
+      resolve: {
+        dedupe: ['h3', 'nitropack', 'ofetch'],
+      },
+      optimizeDeps: {
+        exclude: ['nitropack'],
+      },
+    })
+
     addServerHandler({
       route: '/api/_buggregator',
       method: 'post',

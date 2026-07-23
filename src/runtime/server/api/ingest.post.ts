@@ -1,4 +1,4 @@
-import { defineEventHandler, readBody } from 'h3'
+import { defineEventHandler, readBody } from '#imports'
 
 import { resolveUpstream, upstreamUrl } from '../utils/upstream'
 

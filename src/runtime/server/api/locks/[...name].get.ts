@@ -1,4 +1,4 @@
-import { createError, defineEventHandler, getRouterParam } from 'h3'
+import { createError, defineEventHandler, getRouterParam } from '#imports'
 
 import type { LockStatus } from '../../../core/types'
 import { encodePathSegments, resolveUpstream, upstreamUrl } from '../../utils/upstream'

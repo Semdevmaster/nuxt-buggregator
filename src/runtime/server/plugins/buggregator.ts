@@ -1,4 +1,4 @@
-import { defineNitroPlugin } from 'nitropack/runtime'
+import { defineNitroPlugin } from '#imports'
 
 import { ensureBuggregatorRay } from '../utils/ray'
 

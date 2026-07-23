@@ -31,6 +31,8 @@ const lint: OxlintConfig = {
     'playground/.nuxt/**',
     'playground/.output/**',
     'test/fixtures/**',
+    // Server runtime uses `#imports` (Nitro). Root tsconfig maps `#imports` to app — skip typecheck here.
+    'src/runtime/server/**',
     '**/.nuxt/**',
     '**/.output/**',
     'node_modules/**',

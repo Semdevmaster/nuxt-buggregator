@@ -1,4 +1,4 @@
-import { useRuntimeConfig } from 'nitropack/runtime'
+import { useRuntimeConfig } from '#imports'
 
 import { readPublicBuggregatorConfig } from '../../core/config'
 import { createRayForProxy } from '../../core/factory'

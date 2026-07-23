@@ -1,5 +1,6 @@
 import type { H3Event } from 'h3'
-import { useRuntimeConfig } from 'nitropack/runtime'
+
+import { useRuntimeConfig } from '#imports'
 
 import {
   buggregatorAuthHeader,
