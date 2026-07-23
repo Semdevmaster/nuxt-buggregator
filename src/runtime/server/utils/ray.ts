@@ -1,6 +1,7 @@
 import { useRuntimeConfig } from 'nitropack/runtime'
-import { createRayForProxy } from '../../core/factory'
+
 import { readPublicBuggregatorConfig } from '../../core/config'
+import { createRayForProxy } from '../../core/factory'
 import type { RayFn } from '../../core/ray'
 
 let rayFn: RayFn | null = null

@@ -1,5 +1,5 @@
 import { defineEventHandler, readBody } from 'h3'
-import { $fetch } from 'ofetch'
+
 import { resolveUpstream, upstreamUrl } from '../utils/upstream'
 
 /**
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
   try {
-    await $fetch(upstreamUrl(config, '/'), {
+    await globalThis.$fetch(upstreamUrl(config, '/'), {
       method: 'POST',
       body,
       headers,

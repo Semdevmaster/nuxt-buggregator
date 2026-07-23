@@ -1,7 +1,8 @@
 import type { Plugin } from '#app'
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
-import { createRayForProxy } from '../../core/factory'
+
 import { readPublicBuggregatorConfig } from '../../core/config'
+import { createRayForProxy } from '../../core/factory'
 import type { RayFn } from '../../core/ray'
 
 const plugin: Plugin<{ ray: RayFn }> = defineNuxtPlugin(() => {

@@ -41,39 +41,54 @@
     }
   },
   "scripts": {
+    "prepare": "vp config --no-hooks",
     "prepack": "nuxt-module-build build",
-    "dev": "npm run dev:prepare && nuxt dev playground",
+    "dev": "bun run dev:prepare && nuxt dev playground",
     "dev:build": "nuxt build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
-    "release": "npm run check && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "bun run check && bun run test && bun run prepack && changelogen --release && npm publish && git push --follow-tags",
     "check": "vp check",
+    "check:fix": "vp check --fix",
     "lint": "vp lint",
+    "lint:fix": "vp lint --fix",
     "fmt": "vp fmt",
     "test": "vp test",
     "test:watch": "vp test --watch",
-    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+    "typecheck": "vp check --no-fmt",
+    "validate": "bun run dev:prepare && vp check"
   },
   "dependencies": {
     "@nuxt/kit": "^4.5.0",
-    "defu": "^6.1.4",
-    "ofetch": "^1.5.1"
+    "defu": "^6.1.7"
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.2.4",
+    "@nuxt/eslint-plugin": "^1.16.0",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.5.0",
     "@nuxt/test-utils": "^4.0.3",
-    "@types/node": "latest",
-    "@voidzero-dev/vite-plus-core": "0.2.6",
+    "@types/node": "^26.1.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "@vue/language-server": "^3.3.8",
+    "@vue/typescript-plugin": "^3.3.8",
     "changelogen": "^0.6.2",
+    "eslint": "^10.7.0",
     "nuxt": "^4.5.0",
-    "typescript": "~5.9.3",
+    "oxlint": "1.75.0",
+    "typescript": "~6.0.2",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
     "vite-plus": "0.2.6",
-    "vue-tsc": "^3.3.7"
+    "vitest": "4.1.10"
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
     "vitest": "4.1.10"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "bun",
+      "version": "1.3.14"
+    }
   },
   "engines": {
     "node": ">=24"

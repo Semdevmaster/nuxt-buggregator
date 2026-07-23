@@ -1,5 +1,5 @@
 import { createError, defineEventHandler, getRouterParam } from 'h3'
-import { $fetch } from 'ofetch'
+
 import type { LockStatus } from '../../../core/types'
 import { encodePathSegments, resolveUpstream, upstreamUrl } from '../../utils/upstream'
 
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
   const path = `/locks/${encodePathSegments(name)}`
 
   try {
-    return await $fetch<LockStatus>(upstreamUrl(config, path), {
+    return await globalThis.$fetch<LockStatus>(upstreamUrl(config, path), {
       method: 'GET',
       headers,
     })
