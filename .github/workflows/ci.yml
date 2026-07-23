@@ -19,7 +19,10 @@ jobs:
               with:
                   node-version: '24'
                   cache: true
-                  run-install: true
+                  run-install: false
+
+            - name: Install
+              run: npm ci
 
             - name: Prepare
               run: npm run dev:prepare
