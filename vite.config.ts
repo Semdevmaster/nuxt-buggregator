@@ -10,6 +10,7 @@ export default defineConfig({
   fmt: {
     semi: false,
     singleQuote: true,
+    endOfLine: 'lf',
   },
   staged: {
     '*': 'vp check --fix',
