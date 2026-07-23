@@ -1,0 +1,81 @@
+{
+  "name": "nuxt-buggregator",
+  "version": "1.0.0",
+  "description": "Nuxt module for debugging with Buggregator via Spatie Ray protocol",
+  "keywords": [
+    "buggregator",
+    "debugging",
+    "devtools",
+    "nuxt",
+    "nuxt-module",
+    "ray"
+  ],
+  "homepage": "https://github.com/Semdevmaster/nuxt-buggregator#readme",
+  "bugs": {
+    "url": "https://github.com/Semdevmaster/nuxt-buggregator/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semdevmaster/nuxt-buggregator.git"
+  },
+  "workspaces": [
+    "playground"
+  ],
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "npm run dev:prepare && nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "release": "npm run check && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "check": "vp check",
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "test": "vp test",
+    "test:watch": "vp test --watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.5.0",
+    "defu": "^6.1.4",
+    "ofetch": "^1.5.1"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^3.2.4",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.5.0",
+    "@nuxt/test-utils": "^4.0.3",
+    "@types/node": "latest",
+    "@voidzero-dev/vite-plus-core": "0.2.6",
+    "changelogen": "^0.6.2",
+    "nuxt": "^4.5.0",
+    "typescript": "~5.9.3",
+    "vite-plus": "0.2.6",
+    "vue-tsc": "^3.3.7"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

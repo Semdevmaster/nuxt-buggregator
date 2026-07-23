@@ -1,0 +1,14 @@
+{
+  "name": "nuxt-buggregator-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^4.5.0",
+    "nuxt-buggregator": "file:.."
+  }
+}
