@@ -14,7 +14,7 @@ Chainable Ray API on the **client** (`useRay` / `$ray`) and **server** (Nitro au
 - Spatie-like `ray(...)` API: colors, labels, size, table, json, measure, exception, trace, …
 - Client and server share the same proxy endpoint
 - `host` / `port` / `scheme` / `project` stay on the server only
-- Rich dump of complex values with configurable expand depth (`maxDepth`)
+- Rich dump of complex values with configurable serialize/expand depth (`maxDepth`)
 
 ## Quick Setup
 
@@ -65,14 +65,14 @@ Locks for `pause()`: `$fetch('/api/_buggregator/locks/:name')`.
 
 ## Configuration
 
-| Option     | Default     | Description                                      |
-| ---------- | ----------- | ------------------------------------------------ |
-| `enabled`  | `true`      | Enable sending                                   |
-| `maxDepth` | `3`         | Auto-expand depth for dumped values              |
-| `host`     | `127.0.0.1` | Buggregator host (reachable from Nitro)          |
-| `port`     | `8000`      | Port                                             |
-| `scheme`   | `http`      | `http` \| `https`                                |
-| `project`  | `''`        | Project key (Basic Auth password for user `ray`) |
+| Option     | Default     | Description                                                                   |
+| ---------- | ----------- | ----------------------------------------------------------------------------- |
+| `enabled`  | `true`      | Enable sending                                                                |
+| `maxDepth` | `3`         | Serialize and auto-expand nested dumps to this depth (deeper nodes truncated) |
+| `host`     | `127.0.0.1` | Buggregator host (reachable from Nitro)                                       |
+| `port`     | `8000`      | Port                                                                          |
+| `scheme`   | `http`      | `http` \| `https`                                                             |
+| `project`  | `''`        | Project key (Basic Auth password for user `ray`)                              |
 
 `host`, `port`, `scheme`, and `project` are private runtime config (not sent to the browser).  
 `enabled` and `maxDepth` are also available on the public runtime config (needed on the client).

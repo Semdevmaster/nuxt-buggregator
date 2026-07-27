@@ -27,5 +27,6 @@ export default defineNuxtConfig({
     port: 8000,
     scheme: 'http',
     project: 'default',
+    maxDepth: 5,
   },
 })

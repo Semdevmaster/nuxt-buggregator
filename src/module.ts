@@ -37,7 +37,8 @@ export interface ModuleOptions {
    */
   project?: string
   /**
-   * Max depth for auto-expanded sf-dump trees.
+   * Depth limit for serializing and auto-expanding nested dump values.
+   * Nodes beyond this depth are truncated (`{…}`).
    * @default 3
    */
   maxDepth?: number

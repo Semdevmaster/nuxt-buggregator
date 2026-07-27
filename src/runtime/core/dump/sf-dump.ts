@@ -168,8 +168,8 @@ function dumpValue(value: unknown, depth: number, maxDepth: number, seen: WeakSe
   }
 
   const nextDepth = depth + 1
-  // First level expanded, deeper compact (matches Symfony / Buggregator mocks)
-  const sampClass = depth === 0 ? 'sf-dump-expanded' : 'sf-dump-compact'
+  // Expand nodes while depth < maxDepth; deeper content is truncated above.
+  const sampClass = 'sf-dump-expanded'
 
   const lines = entries.map(([k, v, kind]) => {
     const left = kind === 'index' ? index(k) : key(String(k))
@@ -181,6 +181,7 @@ function dumpValue(value: unknown, depth: number, maxDepth: number, seen: WeakSe
 
 /**
  * Serialize a JS value to Symfony VarDumper `sf-dump` HTML.
+ * Nesting is dumped and auto-expanded up to `maxDepth`; deeper nodes become `{…}`.
  * Buggregator mounts interactivity via `callSfDump(sf-dump-<id>)`.
  */
 export function dumpToHtml(value: unknown, options: DumpOptions = {}): string {
